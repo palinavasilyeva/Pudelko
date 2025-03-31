@@ -1,4 +1,8 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 
 namespace PudelkoLibrary
 {
@@ -118,6 +122,95 @@ namespace PudelkoLibrary
 		}
 	}
 
+	 public static Pudelko operator +(Pudelko p1, Pudelko p2)
+		{
+			double newA = Math.Max(p1.A, p2.A);
+			double newB = Math.Max(p1.B, p2.B);
+			double newC = Math.Max(p1.C, p2.C);
 
+			return new Pudelko(newA, newB, newC, UnitOfMeasure.meter);
+		}
 
+		public static explicit operator double[](Pudelko p)
+		{
+			return new[] { p.A, p.B, p.C };
+		}
+
+		public static implicit operator Pudelko((int a, int b, int c) dimensions)
+		{
+			return new Pudelko(dimensions.a / 1000.0, dimensions.b / 1000.0, dimensions.c / 1000.0, UnitOfMeasure.meter);
+		}
+
+		public double this[int index]
+		{
+			get
+			{
+				return index switch
+				{
+					0 => A,
+					1 => B,
+					2 => C,
+					_ => throw new IndexOutOfRangeException("Invalid index")
+				};
+			}
+		}
+
+		public IEnumerator<double> GetEnumerator()
+		{
+			yield return A;
+			yield return B;
+			yield return C;
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator();
+		}
+
+		public static Pudelko Parse(string input)
+		{
+			if (string.IsNullOrWhiteSpace(input))
+				throw new ArgumentNullException(nameof(input), "Input string cannot be null or empty");
+
+			var parts = input.Split('×', StringSplitOptions.RemoveEmptyEntries);
+			if (parts.Length != 3)
+				throw new FormatException("Input string is not in the correct format");
+
+			double[] dimensions = new double[3];
+			UnitOfMeasure unit = UnitOfMeasure.meter;
+
+			for (int i = 0; i < parts.Length; i++)
+			{
+				var part = parts[i].Trim();
+				var valueUnit = part.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+				if (valueUnit.Length != 2)
+					throw new FormatException("Input string is not in the correct format");
+
+				if (!double.TryParse(valueUnit[0], NumberStyles.Float, CultureInfo.InvariantCulture, out double value))
+					throw new FormatException("Input string is not in the correct format");
+
+				unit = valueUnit[1] switch
+				{
+					"m" => UnitOfMeasure.meter,
+					"cm" => UnitOfMeasure.centimeter,
+					"mm" => UnitOfMeasure.milimeter,
+					_ => throw new FormatException("Input string is not in the correct format")
+				};
+
+				dimensions[i] = unit switch
+				{
+					UnitOfMeasure.meter => value,
+					UnitOfMeasure.centimeter => value / 100,
+					UnitOfMeasure.milimeter => value / 1000,
+					_ => throw new FormatException("Input string is not in the correct format")
+				};
+			}
+
+			return new Pudelko(dimensions[0], dimensions[1], dimensions[2], UnitOfMeasure.meter);
+		}
+
+	}
+
+	
 }
+

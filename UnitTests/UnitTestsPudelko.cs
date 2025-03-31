@@ -447,16 +447,119 @@ namespace PudelkoUnitTests
 
 
         #region Pole, Objętość ===================================
-        // ToDo
+        [TestMethod]
+        public void Objetosc_Test()
+        {
+            var testCases = new List<(double a, double b, double c, double expectedObjetosc)>
+            {
+                (2.5, 9.321, 0.1, 2.5 * 9.321 * 0.1),
+                (1.0, 1.0, 1.0, 1.0 * 1.0 * 1.0),
+                (0.5, 0.5, 0.5, 0.5 * 0.5 * 0.5)
+            };
+
+            foreach (var (a, b, c, expectedObjetosc) in testCases)
+            {
+                var p = new Pudelko(a, b, c);
+                Assert.AreEqual(expectedObjetosc, p.Objetosc, accuracy);
+            }
+        }
+
+        [TestMethod]
+        public void Pole_Test()
+        {
+            var testCases = new List<(double a, double b, double c, double expectedPole)>
+            {
+                (2.5, 9.321, 0.1, 2 * (2.5 * 9.321 + 2.5 * 0.1 + 9.321 * 0.1)),
+                (1.0, 1.0, 1.0, 6.0),
+                (0.5, 0.5, 0.5, 1.5)
+            };
+
+            foreach (var (a, b, c, expectedPole) in testCases)
+            {
+                var p = new Pudelko(a, b, c);
+                Assert.AreEqual(expectedPole, p.Pole, accuracy);
+            }
+        }
 
         #endregion
 
         #region Equals ===========================================
-        // ToDo
+        [TestMethod]
+        public void Equals_Test()
+        {
+            var testCases = new List<(double a1, double b1, double c1, double a2, double b2, double c2, bool expected)>
+            {
+                (2.5, 9.321, 0.1, 2.5, 9.321, 0.1, true),
+                (1.0, 1.0, 1.0, 1.0, 1.0, 1.0, true),
+                (0.5, 0.5, 0.5, 0.5, 0.5, 0.5, true),
+                (2.5, 9.321, 0.1, 2.5, 9.321, 0.2, false)
+            };
+
+            foreach (var (a1, b1, c1, a2, b2, c2, expected) in testCases)
+            {
+                var p1 = new Pudelko(a1, b1, c1);
+                var p2 = new Pudelko(a2, b2, c2);
+                Assert.AreEqual(expected, p1.Equals(p2));
+            }
+        }
         #endregion
 
         #region Operators overloading ===========================
-        // ToDo
+        [TestMethod]
+        public void Operator_Equality_Test()
+        {
+            var testCases = new List<(double a1, double b1, double c1, double a2, double b2, double c2, bool expected)>
+            {
+                (2.5, 9.321, 0.1, 2.5, 9.321, 0.1, true),
+                (1.0, 1.0, 1.0, 1.0, 1.0, 1.0, true),
+                (0.5, 0.5, 0.5, 0.5, 0.5, 0.5, true),
+                (2.5, 9.321, 0.1, 2.5, 9.321, 0.2, false)
+            };
+
+            foreach (var (a1, b1, c1, a2, b2, c2, expected) in testCases)
+            {
+                var p1 = new Pudelko(a1, b1, c1);
+                var p2 = new Pudelko(a2, b2, c2);
+                Assert.AreEqual(expected, p1 == p2);
+            }
+        }
+
+        [TestMethod]
+        public void Operator_Inequality_Test()
+        {
+            var testCases = new List<(double a1, double b1, double c1, double a2, double b2, double c2, bool expected)>
+            {
+                (2.5, 9.321, 0.1, 2.5, 9.321, 0.1, false),
+                (1.0, 1.0, 1.0, 1.0, 1.0, 1.0, false),
+                (0.5, 0.5, 0.5, 0.5, 0.5, 0.5, false),
+                (2.5, 9.321, 0.1, 2.5, 9.321, 0.2, true)
+            };
+
+            foreach (var (a1, b1, c1, a2, b2, c2, expected) in testCases)
+            {
+                var p1 = new Pudelko(a1, b1, c1);
+                var p2 = new Pudelko(a2, b2, c2);
+                Assert.AreEqual(expected, p1 != p2);
+            }
+        }
+
+        [TestMethod]
+        public void Operator_Addition_Test()
+        {
+            var testCases = new List<(double a1, double b1, double c1, double a2, double b2, double c2, double expectedA, double expectedB, double expectedC)>
+            {
+                (1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 5.0, 7.0, 9.0),
+                (0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 1.0, 1.0, 1.0)
+            };
+
+            foreach (var (a1, b1, c1, a2, b2, c2, expectedA, expectedB, expectedC) in testCases)
+            {
+                var p1 = new Pudelko(a1, b1, c1);
+                var p2 = new Pudelko(a2, b2, c2);
+                var result = p1 + p2;
+                AssertPudelko(result, expectedA, expectedB, expectedC);
+            }
+        }
         #endregion
 
         #region Conversions =====================================

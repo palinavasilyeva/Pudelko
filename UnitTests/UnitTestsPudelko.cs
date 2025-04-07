@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PudelkoLibrary;
 using System;
@@ -618,3 +619,20 @@ namespace PudelkoUnitTests
     }
 }<
 
+=======
+namespace UnitTests;
+
+public class Tests
+{
+    [SetUp]
+    public void Setup()
+    {
+    }
+
+    [Test]
+    public void Test1()
+    {
+        Assert.Pass();
+    }
+}
+>>>>>>> ba2cace1ff77026ea3ea1bea837bb2e00b9c012d

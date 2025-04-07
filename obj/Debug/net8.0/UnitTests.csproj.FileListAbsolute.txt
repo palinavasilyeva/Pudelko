@@ -1,0 +1,6 @@
+/Users/polinavasilieva/Downloads/Pudelko-main 2 (with out solution)/UnitTests/bin/Debug/net8.0/CoverletSourceRootsMapping_UnitTests
+/Users/polinavasilieva/Downloads/Pudelko-main 2 (with out solution)/UnitTests/obj/Debug/net8.0/UnitTests.csproj.AssemblyReference.cache
+/Users/polinavasilieva/Downloads/Pudelko-main 2 (with out solution)/UnitTests/obj/Debug/net8.0/UnitTests.GeneratedMSBuildEditorConfig.editorconfig
+/Users/polinavasilieva/Downloads/Pudelko-main 2 (with out solution)/UnitTests/obj/Debug/net8.0/UnitTests.AssemblyInfoInputs.cache
+/Users/polinavasilieva/Downloads/Pudelko-main 2 (with out solution)/UnitTests/obj/Debug/net8.0/UnitTests.AssemblyInfo.cs
+/Users/polinavasilieva/Downloads/Pudelko-main 2 (with out solution)/UnitTests/obj/Debug/net8.0/UnitTests.csproj.CoreCompileInputs.cache

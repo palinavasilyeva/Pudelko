@@ -13,7 +13,11 @@ namespace PudelkoLibrary
 		meter
 	}
 
+<<<<<<< HEAD
 	public class Pudelko : IFormattable, IEquatable<Pudelko>, IEnumerable<double>
+=======
+	public class Pudelko : IFormattable, IEquatable<Pudelko>
+>>>>>>> 8e3cf6af9529a65daa2febb13c7589a7d893234b
 	{
 		private const double DefaultDimension = 0.1; // 10 cm in meters
 		private const double MaxDimension = 10.0; // 10 meters
@@ -27,8 +31,12 @@ namespace PudelkoLibrary
 		public double C => Math.Round(c, 3);
 		public UnitOfMeasure Unit { get; }
 
+<<<<<<< HEAD
 		public Pudelko(double? a = null, double? b = null, double? c = null,
 			UnitOfMeasure unit = UnitOfMeasure.meter)
+=======
+		public Pudelko(double? a = null, double? b = null, double? c = null, UnitOfMeasure unit = UnitOfMeasure.meter)
+>>>>>>> 8e3cf6af9529a65daa2febb13c7589a7d893234b
 		{
 			this.a = ConvertToMeters(a ?? DefaultDimension, unit);
 			this.b = ConvertToMeters(b ?? DefaultDimension, unit);
@@ -55,8 +63,12 @@ namespace PudelkoLibrary
 			{
 				if (dimension <= 0 || dimension > MaxDimension)
 				{
+<<<<<<< HEAD
 					throw new ArgumentOutOfRangeException(nameof(dimensions),
 						"Dimensions must be positive and less than or equal to 10 meters");
+=======
+					throw new ArgumentOutOfRangeException(nameof(dimensions), "Dimensions must be positive and less than or equal to 10 meters");
+>>>>>>> 8e3cf6af9529a65daa2febb13c7589a7d893234b
 				}
 			}
 		}
@@ -72,9 +84,15 @@ namespace PudelkoLibrary
 
 			return format switch
 			{
+<<<<<<< HEAD
 				"m" => $"{A:F3} m Ã— {B:F3} m Ã— {C:F3} m",
 				"cm" => $"{(A * 100):F1} cm Ã— {(B * 100):F1} cm Ã— {(C * 100):F1} cm",
 				"mm" => $"{(A * 1000):F0} mm Ã— {(B * 1000):F0} mm Ã— {(C * 1000):F0} mm",
+=======
+				"m" => $"{A:F3} m × {B:F3} m × {C:F3} m",
+				"cm" => $"{(A * 100):F1} cm × {(B * 100):F1} cm × {(C * 100):F1} cm",
+				"mm" => $"{(A * 1000):F0} mm × {(B * 1000):F0} mm × {(C * 1000):F0} mm",
+>>>>>>> 8e3cf6af9529a65daa2febb13c7589a7d893234b
 				_ => throw new FormatException($"The '{format}' format string is not supported.")
 			};
 		}
@@ -102,7 +120,10 @@ namespace PudelkoLibrary
 			{
 				return Equals(other);
 			}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8e3cf6af9529a65daa2febb13c7589a7d893234b
 			return false;
 		}
 
@@ -123,12 +144,21 @@ namespace PudelkoLibrary
 		{
 			return !(left == right);
 		}
+<<<<<<< HEAD
 
 		public static Pudelko operator +(Pudelko p1, Pudelko p2)
 		{
 			double newA = Math.Max(p1.A, p2.A);
 			double newB = Math.Max(p1.B, p2.B);
 
+=======
+	}
+
+	 public static Pudelko operator +(Pudelko p1, Pudelko p2)
+		{
+			double newA = Math.Max(p1.A, p2.A);
+			double newB = Math.Max(p1.B, p2.B);
+>>>>>>> 8e3cf6af9529a65daa2febb13c7589a7d893234b
 			double newC = Math.Max(p1.C, p2.C);
 
 			return new Pudelko(newA, newB, newC, UnitOfMeasure.meter);
@@ -141,8 +171,12 @@ namespace PudelkoLibrary
 
 		public static implicit operator Pudelko((int a, int b, int c) dimensions)
 		{
+<<<<<<< HEAD
 			return new Pudelko(dimensions.a / 1000.0, dimensions.b / 1000.0, dimensions.c / 1000.0,
 				UnitOfMeasure.meter);
+=======
+			return new Pudelko(dimensions.a / 1000.0, dimensions.b / 1000.0, dimensions.c / 1000.0, UnitOfMeasure.meter);
+>>>>>>> 8e3cf6af9529a65daa2febb13c7589a7d893234b
 		}
 
 		public double this[int index]
@@ -176,7 +210,11 @@ namespace PudelkoLibrary
 			if (string.IsNullOrWhiteSpace(input))
 				throw new ArgumentNullException(nameof(input), "Input string cannot be null or empty");
 
+<<<<<<< HEAD
 			var parts = input.Split('ï¿½', StringSplitOptions.RemoveEmptyEntries);
+=======
+			var parts = input.Split('×', StringSplitOptions.RemoveEmptyEntries);
+>>>>>>> 8e3cf6af9529a65daa2febb13c7589a7d893234b
 			if (parts.Length != 3)
 				throw new FormatException("Input string is not in the correct format");
 
@@ -190,8 +228,12 @@ namespace PudelkoLibrary
 				if (valueUnit.Length != 2)
 					throw new FormatException("Input string is not in the correct format");
 
+<<<<<<< HEAD
 				if (!double.TryParse(valueUnit[0], NumberStyles.Float, CultureInfo.InvariantCulture,
 					    out double value))
+=======
+				if (!double.TryParse(valueUnit[0], NumberStyles.Float, CultureInfo.InvariantCulture, out double value))
+>>>>>>> 8e3cf6af9529a65daa2febb13c7589a7d893234b
 					throw new FormatException("Input string is not in the correct format");
 
 				unit = valueUnit[1] switch
@@ -215,6 +257,13 @@ namespace PudelkoLibrary
 		}
 
 	}
+<<<<<<< HEAD
 }
 
 
+=======
+
+	
+}
+
+>>>>>>> 8e3cf6af9529a65daa2febb13c7589a7d893234b

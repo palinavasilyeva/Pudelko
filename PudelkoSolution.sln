@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PudelkoLibrary", "PudelkoLibrary\PudelkoLibrary.csproj", "{CE68060D-649F-4B92-A0CC-BB7B601A9B6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{67CCF8C0-27F8-43AD-91ED-9621AA61C70B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{0BCC6F22-02C4-40F6-8C48-79F1E524E548}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE68060D-649F-4B92-A0CC-BB7B601A9B6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE68060D-649F-4B92-A0CC-BB7B601A9B6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE68060D-649F-4B92-A0CC-BB7B601A9B6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE68060D-649F-4B92-A0CC-BB7B601A9B6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67CCF8C0-27F8-43AD-91ED-9621AA61C70B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67CCF8C0-27F8-43AD-91ED-9621AA61C70B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67CCF8C0-27F8-43AD-91ED-9621AA61C70B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67CCF8C0-27F8-43AD-91ED-9621AA61C70B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BCC6F22-02C4-40F6-8C48-79F1E524E548}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BCC6F22-02C4-40F6-8C48-79F1E524E548}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BCC6F22-02C4-40F6-8C48-79F1E524E548}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BCC6F22-02C4-40F6-8C48-79F1E524E548}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

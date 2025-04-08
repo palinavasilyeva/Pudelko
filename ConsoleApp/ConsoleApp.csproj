@@ -9,6 +9,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\PudelkoLibrary\PudelkoLibrary.csproj" />
+      <ProjectReference Include="..\UnitTests\UnitTests.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PudelkoLibrary;
 using System;
@@ -100,7 +99,7 @@ namespace PudelkoUnitTests
         }
 
 
-//
+
 
         [DataTestMethod, TestCategory("Constructors")]
         [DataRow(1.0, 2.5, 1.0, 2.5)]
@@ -192,7 +191,7 @@ namespace PudelkoUnitTests
             AssertPudelko(p, expectedA, expectedB: 0.1, expectedC: 0.1);
         }
 
-        // ---
+        
 
         public static IEnumerable<object[]> DataSet1Meters_ArgumentOutOfRangeEx => new List<object[]>
         {
@@ -617,22 +616,6 @@ namespace PudelkoUnitTests
         #endregion
 
     }
-}<
-
-=======
-namespace UnitTests;
-
-public class Tests
-{
-    [SetUp]
-    public void Setup()
-    {
-    }
-
-    [Test]
-    public void Test1()
-    {
-        Assert.Pass();
-    }
 }
->>>>>>> ba2cace1ff77026ea3ea1bea837bb2e00b9c012d
+
+

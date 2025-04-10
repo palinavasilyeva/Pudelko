@@ -432,7 +432,7 @@ namespace PudelkoUnitTests
         public void ToString_Formattable_Culture_EN(string format, double a, double b, double c, string expectedStringRepresentation)
         {
             var p = new Pudelko(a, b, c, unit: UnitOfMeasure.meter);
-            Assert.AreEqual(expectedStringRepresentation, p.ToString(format));
+            Assert.AreEqual(expectedStringRepresentation, p.ToString(format, CultureInfo.InvariantCulture));
         }
 
         [TestMethod, TestCategory("String representation")]
@@ -440,7 +440,7 @@ namespace PudelkoUnitTests
         public void ToString_Formattable_WrongFormat_FormatException()
         {
             var p = new Pudelko(1);
-            var stringformatedrepreentation = p.ToString("wrong code");
+            var stringformatedrepreentation = p.ToString("wrong code", CultureInfo.InvariantCulture);
         }
 
         #endregion

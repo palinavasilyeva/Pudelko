@@ -612,6 +612,47 @@ namespace PudelkoUnitTests
         #endregion
 
         #region Parsing =========================================
+        public static Pudelko Parse(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+                throw new ArgumentNullException(nameof(input), "Input string cannot be null or empty");
+
+            var parts = input.Split(new[] { '×', 'x', 'X' }, StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length != 3)
+                throw new FormatException("Input string is not in the correct format");
+
+            double[] dimensions = new double[3];
+            UnitOfMeasure unit = UnitOfMeasure.meter;
+
+            for (int i = 0; i < parts.Length; i++)
+            {
+                var part = parts[i].Trim();
+                var valueUnit = part.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                if (valueUnit.Length != 2)
+                    throw new FormatException("Input string is not in the correct format");
+
+                if (!double.TryParse(valueUnit[0], NumberStyles.Float, CultureInfo.InvariantCulture, out double value))
+                    throw new FormatException("Input string is not in the correct format");
+
+                unit = valueUnit[1] switch
+                {
+                    "m" => UnitOfMeasure.meter,
+                    "cm" => UnitOfMeasure.centimeter,
+                    "mm" => UnitOfMeasure.milimeter,
+                    _ => throw new FormatException("Input string is not in the correct format")
+                };
+
+                dimensions[i] = unit switch
+                {
+                    UnitOfMeasure.meter => value,
+                    UnitOfMeasure.centimeter => value / 100,
+                    UnitOfMeasure.milimeter => value / 1000,
+                    _ => throw new FormatException("Input string is not in the correct format")
+                };
+            }
+
+            return new Pudelko(dimensions[0], dimensions[1], dimensions[2], UnitOfMeasure.meter);
+        }
 
         #endregion
 

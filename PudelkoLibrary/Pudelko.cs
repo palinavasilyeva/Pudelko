@@ -29,12 +29,12 @@ namespace PudelkoLibrary
 
         public Pudelko(double? a = null, double? b = null, double? c = null, UnitOfMeasure unit = UnitOfMeasure.meter)
         {
-            this.a = ConvertToMeters(a ?? DefaultDimension, unit);
-            this.b = ConvertToMeters(b ?? DefaultDimension, unit);
-            this.c = ConvertToMeters(c ?? DefaultDimension, unit);
-            Unit = unit;
+            this.a = Math.Round(ConvertToMeters(a ?? DefaultDimension, unit), 3);
+            this.b = Math.Round(ConvertToMeters(b ?? DefaultDimension, unit), 3);
+            this.c = Math.Round(ConvertToMeters(c ?? DefaultDimension, unit), 3);
 
             ValidateDimensions(this.a, this.b, this.c);
+            Unit = unit;
         }
 
         private double ConvertToMeters(double value, UnitOfMeasure unit)
@@ -78,8 +78,8 @@ namespace PudelkoLibrary
         }
 
         public double Objetosc => Math.Round(a * b * c, 9);
-
         public double Pole => Math.Round(2 * (a * b + b * c + a * c), 6);
+
 
         public bool Equals(Pudelko other)
         {
@@ -123,9 +123,9 @@ namespace PudelkoLibrary
 
         public static Pudelko operator +(Pudelko p1, Pudelko p2)
         {
-            double newA = Math.Max(p1.A, p2.A);
-            double newB = Math.Max(p1.B, p2.B);
-            double newC = Math.Max(p1.C, p2.C);
+            double newA = p1.A + p2.A;
+            double newB = p1.B + p2.B;
+            double newC = p1.C + p2.C;
 
             return new Pudelko(newA, newB, newC, UnitOfMeasure.meter);
         }
